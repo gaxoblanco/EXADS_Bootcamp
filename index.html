@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Selection</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <!-- Encabezado principal -->
@@ -21,9 +22,9 @@
         <div class="progress">
           <span>QUESTION 1 OF 3:</span>
           <div class="circles">
-            <span class="circle active"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
+            <span id="question1" class="circle"></span>
+            <span id="question2" class="circle"></span>
+            <span id="question3" class="circle"></span>
           </div>
         </div>
       </section>
@@ -36,16 +37,13 @@
       <!-- Opciones de películas -->
       <section class="movies-container">
         <div class="movie-card">
-          <img src="img/movie/the_gray_man.jpg" alt="The Gray Man" />
+          <img id="movie1" src="" alt="The Gray Man" />
         </div>
         <div class="movie-card">
-          <img src="img/movie/blonde.jpg" alt="Blonde" />
+          <img id="movie2" src="" alt="Blonde" />
         </div>
         <div class="movie-card">
-          <img
-            src="img/movie/minions_the_rise_of_gru.jpg"
-            alt="Minions: The Rise of Gru"
-          />
+          <img id="movie3" src="" alt="Minions: The Rise of Gru" />
         </div>
       </section>
     </main>
