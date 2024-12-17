@@ -49,10 +49,19 @@
     text-align: center;
     padding: 1rem;
   }
-  
-  .logo-container h1 {
-    font-size: 1.5rem;
+
+  .logo-container{
     color: #e50914;
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+  }
+  
+  .logo-container .logo-title{
+    font-size: 1.6rem;
+    border: 2px solid;
+    padding: 12px 20px;
+    background-color: #00000066;
   }
   
   /* Indicador de progreso */
@@ -150,7 +159,7 @@
     .instruction-container h2 {
       font-size: 1.5rem;
     }
-    .logo-container h1 {
+    .logo-container .logo-title {
       font-size: 2rem;
     }
   }
