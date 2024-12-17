@@ -73,6 +73,7 @@ function formQuestions(questions, leterOption) {
 
 // Función para inicializar las imágenes
 function optionsMovie(questions, movies, leterOption) {
+  const movieCards = document.querySelectorAll(".movie-card");
   // Obtener las imágenes por su ID
   const movie1 = document.getElementById("movie1");
   const movie2 = document.getElementById("movie2");
@@ -86,27 +87,38 @@ function optionsMovie(questions, movies, leterOption) {
     console.error(
       `No se encontraron películas para la clave: ${questions}_${leterOption}`
     );
+    currentQuestion--;
+    // updateQuestion(currentQuestion);
+    formQuestions(`quest${currentQuestion}`, leterOption);
+    movieCards.forEach((card) => card.classList.remove("fade-out"));
     return;
   }
 
-  // Asignar las imágenes y textos alternativos a cada película
-  movie1.src = moviesToLoad[0].img;
-  movie1.alt = moviesToLoad[0].img_alt;
+  // movieCards.forEach((card) => card.classList.add("fade-in"));
+  // quito la fade-out a .movie-card.fade-out
+  setTimeout(() => {
+    // Asignar las imágenes y textos alternativos a cada película
+    movie1.src = moviesToLoad[0].img;
+    movie1.alt = moviesToLoad[0].img_alt;
 
-  movie2.src = moviesToLoad[1].img;
-  movie2.alt = moviesToLoad[1].img_alt;
+    movie2.src = moviesToLoad[1].img;
+    movie2.alt = moviesToLoad[1].img_alt;
 
-  movie3.src = moviesToLoad[2].img;
-  movie3.alt = moviesToLoad[2].img_alt;
+    movie3.src = moviesToLoad[2].img;
+    movie3.alt = moviesToLoad[2].img_alt;
+
+    movieCards.forEach((card) => card.classList.remove("fade-out"));
+  }, 800);
 }
 
 // Función pasar al siguiente grupo de preguntas/ movies
 function nextGroup(idMovie) {
-  console.log("idMovie", idMovie);
-
   currentQuestion++;
-  console.log("currentQ", currentQuestion);
+  // console.log("currentQ", currentQuestion);
 
+  // Agrego la class fade-out a .movie-card
+  const movieCards = document.querySelectorAll(".movie-card");
+  movieCards.forEach((card) => card.classList.add("fade-out"));
   // Uso un switch case para cada pregunta, usando idMovie para resolver que grupo de asignar
   switch (idMovie) {
     case "movie1":

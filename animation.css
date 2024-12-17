@@ -1,0 +1,34 @@
+/* Animación de entrada: fade-in con escala */
+@keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95); /* Un poco más pequeño al inicio */
+    }
+    to {
+      opacity: 1;
+      transform: scale(1); /* Vuelve a tamaño normal */
+    }
+  }
+  
+  /* Animación de salida: fade-out con escala */
+  @keyframes fadeOutScale {
+    from {
+      opacity: 1;
+      transform: scale(1); /* Tamaño normal */
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.9); /* Se reduce un poco */
+    }
+  }
+  
+  /* Clase de salida */
+  .movie-card.fade-out {
+    animation: fadeOutScale 0.3s ease-in-out forwards; /* Animación de salida */
+  }
+  
+  /* Clase de entrada */
+  .movie-card {
+    animation: fadeInScale 0.5s ease-in-out forwards; /* Animación de entrada */
+  }
+  
