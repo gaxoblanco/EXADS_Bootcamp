@@ -1,0 +1,26 @@
+/* Contenedor de películas */
+.movies-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:  2.125rem;
+    padding: 1rem;
+    margin-top: 32px;
+  }
+  
+  .movie-card {
+    width: 80%;
+    max-width: 290px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .movie-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    display: block;
+  }

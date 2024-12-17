@@ -45,6 +45,11 @@
     background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con 80% de opacidad */
     z-index: -1;
   }
+
+  main {
+    min-height: 70vh;
+    align-content: center;
+  }
   
   /* Logo */
   header {
@@ -120,34 +125,6 @@
     font-weight: 600;
   }
   
-  /* Contenedor de películas */
-  .movies-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:  2.125rem;
-    padding: 1rem;
-    margin-top: 32px;
-  }
-  
-  .movie-card {
-    width: 80%;
-    max-width: 290px;
-    background-color: #333;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .movie-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
-  }
-  
-  .movie-card img {
-    width: 100%;
-    display: block;
-  }
   
   /* Footer */
   footer {
@@ -175,22 +152,5 @@
   footer nav a:hover {
     color: #fff;
   }
-  
-  /* Media Queries para tabletas */
-  @media (min-width: 768px) {
-    .movies-container {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-  
-  /* Media Queries para escritorio */
-  @media (min-width: 1024px) {
-    .logo-container .logo-title {
-      font-size: 2rem;
-    }
-    .instruction-container h2 {
-      font-size: var(--font-size-xxlarge);
-    }
-  }
+
   

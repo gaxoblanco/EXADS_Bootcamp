@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Selection</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="animation.css" />
-    <link rel="stylesheet" href="disable.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/disable.css" />
+    <link rel="stylesheet" href="css/movie-card.css" />
+    <link rel="stylesheet" href="css/promo-section.css" />
+    <link rel="stylesheet" href="css/media.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -19,35 +22,52 @@
 
     <!-- Contenido principal -->
     <main>
-      <!-- Indicador de progreso -->
-      <section class="progress-container">
-        <div class="progress">
-          <span>QUESTION 0 OF 0:</span>
-          <div class="circles">
-            <span id="question1" class="circle"></span>
-            <span id="question2" class="circle"></span>
-            <span id="question3" class="circle"></span>
+      <article id="quiz-article">
+        <!-- Indicador de progreso -->
+        <section class="progress-container">
+          <div class="progress">
+            <span>QUESTION 0 OF 0:</span>
+            <div class="circles">
+              <span id="question1" class="circle"></span>
+              <span id="question2" class="circle"></span>
+              <span id="question3" class="circle"></span>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Instrucción -->
-      <section class="instruction-container">
-        <h2>Choose one of the three movies</h2>
-      </section>
+        <!-- Instrucción -->
+        <section class="instruction-container">
+          <h2>Choose one of the three movies</h2>
+        </section>
 
-      <!-- Opciones de películas -->
-      <section class="movies-container">
-        <figure id="movieA" class="movie-card">
-          <img src="" alt="The Gray Man" />
-        </figure>
-        <figure id="movieB" class="movie-card">
-          <img src="" alt="Blonde" />
-        </figure>
-        <figure id="movieC" class="movie-card">
-          <img src="" alt="Minions: The Rise of Gru" />
-        </figure>
-      </section>
+        <!-- Opciones de películas -->
+        <section class="movies-container">
+          <figure id="movieA" class="movie-card">
+            <img src="" alt="The Gray Man" />
+          </figure>
+          <figure id="movieB" class="movie-card">
+            <img src="" alt="Blonde" />
+          </figure>
+          <figure id="movieC" class="movie-card">
+            <img src="" alt="Minions: The Rise of Gru" />
+          </figure>
+        </section>
+      </article>
+      <article id="promo-article">
+        <!-- promo-section -->
+        <section class="promo-section off">
+          <div class="promo-content">
+            <h2 class="promo-title">WATCH NEW MOVIES FOR FREE!</h2>
+            <p class="promo-subtitle">
+              Watch any movies online for free without ads!
+            </p>
+            <p class="promo-subtitle" href="#">
+              Have fun watching your favourite movies!
+            </p>
+            <button class="promo-button">WATCH HERE!</button>
+          </div>
+        </section>
+      </article>
     </main>
 
     <!-- Footer -->

@@ -1,0 +1,45 @@
+@import url('variables.css');
+
+/* Estilo para la sección promocional */
+.promo-section {
+    background-color: var(--text-color);
+    color: black;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 10px solid var(--primary-color);
+    max-width: 680px;
+    margin: 20px 36px;
+    text-align: center;
+
+  }
+  
+  .promo-content {
+    padding: 20px;
+  }
+  
+  .promo-title {
+    font-size: var(--font-size-xxlarge);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .promo-subtitle {
+    font-size: var(--font-size-medium);
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .promo-button {
+    background-color: #EC5632;
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .promo-button:hover {
+    background-color: var(--secondary-color); /* Color más oscuro para el hover */
+  }

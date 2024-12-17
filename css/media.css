@@ -1,0 +1,22 @@
+@import url('variables.css');
+
+/* Media Queries para tabletas */
+@media (min-width: 768px) {
+    .movies-container {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .promo-section {
+      margin: 20px auto;
+    }
+  }
+  
+  /* Media Queries para escritorio */
+  @media (min-width: 1024px) {
+    .logo-container .logo-title {
+      font-size: 2rem;
+    }
+    .instruction-container h2 {
+      font-size: var(--font-size-xxlarge);
+    }
+  }
