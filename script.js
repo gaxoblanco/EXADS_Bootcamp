@@ -8,9 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // Inicializar las imágenes en el HTML con los datos del JSON
       // initializeMovies(data);
       formQuestions("quest1", data);
+      updateQuestion(1);
     })
     .catch((error) => console.error("Error loading the movie data:", error));
 });
+
+// Funcion para actualizar el marcador de preguntas
+function updateQuestion(current) {
+  const totalQuestions = 3;
+  const questionSpan = document.querySelector(
+    ".progress-container .progress > span"
+  );
+  questionSpan.textContent = `QUESTION ${current} OF ${totalQuestions}:`;
+}
 
 // Funcion para inicializar progress questions
 function formQuestions(questions, data) {
@@ -29,12 +39,14 @@ function formQuestions(questions, data) {
       const question2 = document.getElementById("question2");
       // Le agrego la class active
       question2.classList.add("active");
+      updateQuestion(2);
       break;
     case "quest3":
       // Obtener las preguntas por su ID
       const question3 = document.getElementById("question3");
       // Le agrego la class active
       question3.classList.add("active");
+      updateQuestion(3);
       break;
 
     default:
@@ -62,3 +74,17 @@ function optionsMovie(questions, movies) {
   movie3.src = moviesToLoad[2].img;
   movie3.alt = moviesToLoad[2].img_alt;
 }
+
+// Función para cambiar una película
+function changeMovie(index, movieData) {}
+
+// Ejemplo de cómo cambiar una película (por ejemplo, al hacer click en una imagen):
+document.querySelectorAll(".movie-card img").forEach((img, index) => {
+  img.addEventListener("click", () => {
+    // Llamar a la función de cambiar imagen al hacer clic
+    changeMovie(index, {
+      img: "new-image-path.jpg", // Nueva ruta de la imagen
+      img_alt: "New Movie", // Nuevo texto del atributo alt
+    });
+  });
+});
