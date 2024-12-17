@@ -1,0 +1,22 @@
+  
+  /* Cuando el .movie-card tiene la clase .disable */
+  .movie-card.disable::before {
+    content: ""; /* Necesario para los pseudo-elementos */
+    position: absolute; /* Posicionamos el pseudo-elemento dentro de la tarjeta */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1; /* Coloca la capa sobre el contenido de la tarjeta */
+  }
+  
+  .movie-card.disable img {
+    z-index: 2; /* Para que la imagen esté por encima de la capa */
+    opacity: 0.7;
+  }
+
+  .movie-card.disable:hover {
+    transform: scale(0);
+    box-shadow: none;
+  }
