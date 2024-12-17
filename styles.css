@@ -1,0 +1,128 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #0f0f0f;
+    color: white;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Logo */
+  header {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .logo-container h1 {
+    font-size: 1.5rem;
+    color: #e50914;
+  }
+  
+  /* Indicador de progreso */
+  .progress-container {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .progress span {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .circles {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: grey;
+  }
+  
+  .circle.active {
+    background-color: #00e676;
+  }
+  
+  /* Título de instrucciones */
+  .instruction-container {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .instruction-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  /* Contenedor de películas */
+  .movies-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .movie-card {
+    width: 80%;
+    max-width: 300px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    display: block;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  footer nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  footer nav a:hover {
+    color: #fff;
+  }
+  
+  /* Media Queries para tabletas */
+  @media (min-width: 768px) {
+    .movies-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Media Queries para escritorio */
+  @media (min-width: 1024px) {
+    .instruction-container h2 {
+      font-size: 1.5rem;
+    }
+    .logo-container h1 {
+      font-size: 2rem;
+    }
+  }
+  
