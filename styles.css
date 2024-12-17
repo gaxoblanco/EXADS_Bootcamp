@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 /* Estilos generales */
 * {
     margin: 0;
@@ -7,8 +9,8 @@
   }
   
   body {
-    color: white;
-    line-height: 1.5;
+    color: var(--text-color);
+    line-height: var(--font-size-large);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -51,14 +53,14 @@
   }
 
   .logo-container{
-    color: #e50914;
+    color: var(--secondary-color);
     display: flex;
     margin-top: 40px;
     justify-content: center;
   }
   
   .logo-container .logo-title{
-    font-size: 1.6rem;
+    font-size: var(--font-size-large);
     border: 2px solid;
     padding: 12px 20px;
     background-color: #00000066;
@@ -68,30 +70,43 @@
   .progress-container {
     text-align: center;
     margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .progress {
+    font-size: var(--font-size-medium);
+    color: var(--primary-color);
+    padding: 20px 30px;
+    border-radius: 8px;
+    border: 1px solid #FFFFFF21;
+    background-color: var(--text-color);
   }
   
   .progress span {
     display: block;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: var(--font-size-medium);
+    font-weight: 700;
     margin-bottom: 0.5rem;
   }
   
   .circles {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 1.3rem;
+    margin-top: 13px;
   }
   
   .circle {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background-color: grey;
+    background-color: var(--text-color);
+    border: 1.6px solid var(--primary-color); /* Recomiendo pasar a 2px por accesibilidad */
   }
   
   .circle.active {
-    background-color: #00e676;
+    background-color: var(--primary-color);
   }
   
   /* Título de instrucciones */
