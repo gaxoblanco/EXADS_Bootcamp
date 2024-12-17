@@ -16,7 +16,7 @@
     z-index: 0;
   }
 
-  /* Ajusto el fondo */
+  /* Ajusto la img del fondo */
   body::before {
       content: "";
       position: absolute;
