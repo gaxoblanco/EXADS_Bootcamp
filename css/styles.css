@@ -125,6 +125,10 @@
     font-size: var(--font-size-xlarge);
     font-weight: 600;
   }
+  .instruction-container h2:focus-visible {
+    padding: 20px 0;
+    margin: -20px 0;
+  }
   
   /* on off switch */
   .off {

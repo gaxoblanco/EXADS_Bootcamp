@@ -47,7 +47,6 @@ function formQuestions(questions, leterOption) {
       question1.classList.add("active");
       // Cargo las preguntas/ movies
       optionsMovie(questions, moviesArray, leterOption);
-      console.log("quest 1 active");
 
       break;
     case "quest2":
@@ -58,7 +57,8 @@ function formQuestions(questions, leterOption) {
       updateQuestion(2);
       // Cargo las preguntas/ movies
       optionsMovie(questions, moviesArray, leterOption);
-      console.log("quest 2 active");
+      // enfoco questionText para leer la siguiente pregunta
+      questionText.focus();
       break;
     case "quest3":
       // Le quito la class active
@@ -68,6 +68,8 @@ function formQuestions(questions, leterOption) {
       updateQuestion(3);
       // Cargo las preguntas/ movies
       optionsMovie(questions, moviesArray, leterOption);
+      // enfoco questionText para leer la siguiente pregunta
+      questionText.focus();
       break;
 
     default:
@@ -241,9 +243,8 @@ function toggleArticles() {
 
 // Seleccionamos todas las imágenes dentro de .movie-card
 document.querySelectorAll(".movie-card").forEach((figure) => {
-  // Escuchar el evento de clic en cada tarjeta de película
-  figure.addEventListener("click", (event) => {
-    // Obtener el ID de la tarjeta de película (figure)
+  // Función para manejar el clic y la tecla Enter
+  const handleAction = () => {
     const movieId = figure.id;
 
     // Verificar si la tarjeta tiene la clase "disable"
@@ -257,5 +258,15 @@ document.querySelectorAll(".movie-card").forEach((figure) => {
     // Si no tiene la clase "disable", ejecutar la función nextGroup
     console.log(`Se hizo clic en la tarjeta ${movieId}`);
     nextGroup(movieId);
+  };
+
+  // Escuchar el evento de clic en cada tarjeta de película
+  figure.addEventListener("click", handleAction);
+
+  // Escuchar el evento de tecla en cada tarjeta de película
+  figure.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleAction();
+    }
   });
 });

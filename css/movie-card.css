@@ -24,3 +24,16 @@
     width: 100%;
     display: block;
   }
+
+  /* Acesibilidad */
+  .movie-card {
+    /* Estilos base de las tarjetas de película */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .movie-card.focused {
+    transform: scale(1.05); /* Aumenta el tamaño cuando está enfocado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Añade sombra */
+    outline: 2px solid #007bff; /* Añadir borde para indicar el enfoque */
+  }
+  

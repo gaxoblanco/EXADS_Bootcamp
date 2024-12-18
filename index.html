@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/movie-card.css" />
     <link rel="stylesheet" href="css/promo-section.css" />
     <link rel="stylesheet" href="css/media.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <!-- Encabezado principal -->
@@ -26,25 +25,28 @@
         <!-- Indicador de progreso -->
         <section class="progress-container">
           <div class="progress">
-            <span>QUESTION 0 OF 0:</span>
+            <span tabindex="0">QUESTION 0 OF 0:</span>
             <div class="circles" role="list">
               <span
                 id="question1"
                 class="circle"
                 role="listitem"
                 aria-label="Question 1"
+                tabindex="0"
               ></span>
               <span
                 id="question2"
                 class="circle"
                 role="listitem"
                 aria-label="Question 2"
+                tabindex="0"
               ></span>
               <span
                 id="question3"
                 class="circle"
                 role="listitem"
                 aria-label="Question 3"
+                tabindex="0"
               ></span>
             </div>
           </div>
@@ -52,20 +54,22 @@
 
         <!-- Instrucción -->
         <section class="instruction-container">
-          <h2 id="question-text">Choose one of the three movies</h2>
+          <h2 id="question-text" tabindex="0">
+            Choose one of the three movies
+          </h2>
         </section>
 
         <!-- Opciones de películas -->
         <section class="movies-container">
-          <figure id="movieA" class="movie-card" role="button">
+          <figure id="movieA" class="movie-card" role="button" tabindex="0">
             <img src="" alt="loading..." />
             <figcaption class="off"></figcaption>
           </figure>
-          <figure id="movieB" class="movie-card" role="button">
+          <figure id="movieB" class="movie-card" role="button" tabindex="0">
             <img src="" alt="loading..." />
             <figcaption class="off"></figcaption>
           </figure>
-          <figure id="movieC" class="movie-card" role="button">
+          <figure id="movieC" class="movie-card" role="button" tabindex="0">
             <img src="" alt="loading..." />
             <figcaption class="off"></figcaption>
           </figure>
@@ -73,13 +77,13 @@
       </article>
       <article id="promo-article" class="off">
         <!-- promo-section -->
-        <section class="promo-section">
+        <section class="promo-section" tabindex="0">
           <div class="promo-content">
-            <h2 class="promo-title">WATCH NEW MOVIES FOR FREE!</h2>
-            <p class="promo-subtitle">
+            <h2 class="promo-title" tabindex="0">WATCH NEW MOVIES FOR FREE!</h2>
+            <p class="promo-subtitle" tabindex="0">
               Watch any movies online for free without ads!
             </p>
-            <p class="promo-subtitle" href="#">
+            <p class="promo-subtitle" href="#" tabindex="0">
               Have fun watching your favourite movies!
             </p>
             <button class="promo-button">WATCH HERE!</button>
@@ -96,4 +100,6 @@
       </nav>
     </footer>
   </body>
+  <script src="script.js" defer></script>
+  <script src="acesibilidad.js" defer></script>
 </html>
