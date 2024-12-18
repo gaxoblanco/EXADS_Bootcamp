@@ -22,13 +22,30 @@
     }
   }
   
-  /* Clase de salida */
-  .movie-card.fade-out {
-    animation: fadeOutScale 0.3s ease-in-out forwards; /* Animación de salida */
-  }
+/* Clase de salida */
+.movie-card.fade-out {
+  animation: fadeOutScale 0.3s ease-in-out forwards; /* Animación de salida */
+}
   
-  /* Clase de entrada */
-  .movie-card {
+/* Clase de entrada */
+.movie-card {
     animation: fadeInScale 0.5s ease-in-out forwards; /* Animación de entrada */
+}
+
+/* ------------------- */
+/* Definir la animación de desvanecimiento */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Clase para hacer el fade-out */
+.fade-out {
+  animation: fadeOutScale 0.3s ease-in-out forwards;
+}
+

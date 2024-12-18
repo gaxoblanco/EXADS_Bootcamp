@@ -2,6 +2,9 @@
 let currentQuestion = 1;
 const totalQuestions = 3;
 const moviesArray = {};
+// Obtengo el elemento de la pregunta
+const questionText = document.getElementById("question-text");
+const movieCards = document.querySelectorAll(".movie-card");
 
 // funciona igual que un fech a una API
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,7 +77,6 @@ function formQuestions(questions, leterOption) {
 
 // Función para inicializar las imágenes
 function optionsMovie(questions, movies, leterOption) {
-  const movieCards = document.querySelectorAll(".movie-card");
   // Obtener las imágenes por su ID
   const movieA = document.getElementById("movieA").querySelector("img");
   const movieB = document.getElementById("movieB").querySelector("img");
@@ -90,27 +92,31 @@ function optionsMovie(questions, movies, leterOption) {
     .getElementById("movieC")
     .querySelector("figcaption");
 
-  // Si es el ultimo paso por defecto no tiene un siguiente paso.
   if (currentQuestion !== totalQuestions) {
     // valido si desactivo algun opcion por falta de ruta
     followStep(currentQuestion, movies, movieCards);
   }
 
   // Obtener las películas correspondientes al grupo de preguntas
-  const moviesToLoad = movies[`${questions}_${leterOption}`];
+  const moviesToLoad = movies[`${questions}_${leterOption}`].options;
+  // Obtengo la pregunta
+  const question = movies[`${questions}_${leterOption}`].question;
   // Verificar si moviesToLoad está definido
   if (!moviesToLoad) {
     console.error(
       `No se encontraron películas para la clave: ${questions}_${leterOption}`
     );
+    // Prevengo que el error rompa el flujo del programa
     currentQuestion--;
-    // updateQuestion(currentQuestion);
     formQuestions(`quest${currentQuestion}`, leterOption);
     movieCards.forEach((card) => card.classList.remove("fade-out"));
+    questionText.classList.remove("fade-out");
     return;
   }
 
   setTimeout(() => {
+    // Asignar la pregunta al elemento HTML
+    questionText.textContent = question;
     // Asignar las imágenes y textos alternativos a cada película
     movieA.src = moviesToLoad[0].img;
     movieA.alt = moviesToLoad[0].img_alt;
@@ -125,6 +131,7 @@ function optionsMovie(questions, movies, leterOption) {
     figcaptionC.textContent = moviesToLoad[2].img_alt;
 
     movieCards.forEach((card) => card.classList.remove("fade-out"));
+    questionText.classList.remove("fade-out");
   }, 800);
 }
 
@@ -154,7 +161,6 @@ function followStep(currentQuestion, movies, movieCards) {
 
 // Función para quitar la clase 'disable' de todas las tarjetas
 function resetDisableState() {
-  const movieCards = document.querySelectorAll(".movie-card");
   movieCards.forEach((card) => {
     if (card.classList.contains("disable")) {
       card.classList.remove("disable"); // Elimina la clase disable
@@ -165,14 +171,11 @@ function resetDisableState() {
 
 // Función pasar al siguiente grupo de preguntas/ movies
 function nextGroup(idMovie) {
-  // Llamar a la función para quitar las clases 'disable'
+  // Llamar a la función para limpiar las clases 'disable'
   resetDisableState();
 
   // Incrementar el número de la pregunta actual
   currentQuestion++;
-
-  console.log("currentQuestion", currentQuestion);
-  console.log("totalQuestions", totalQuestions);
 
   // Si es el ultimo paso
   if (currentQuestion === totalQuestions + 1) {
@@ -181,8 +184,9 @@ function nextGroup(idMovie) {
   }
 
   // Agrego la class fade-out a .movie-card
-  const movieCards = document.querySelectorAll(".movie-card");
   movieCards.forEach((card) => card.classList.add("fade-out"));
+  // Agrego la class fede-aut a questionText
+  questionText.classList.add("fade-out");
   // Uso un switch case para cada pregunta, usando idMovie para resolver que grupo de asignar
   switch (idMovie) {
     case "movieA":
