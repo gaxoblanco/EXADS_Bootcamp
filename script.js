@@ -79,6 +79,16 @@ function optionsMovie(questions, movies, leterOption) {
   const movieA = document.getElementById("movieA").querySelector("img");
   const movieB = document.getElementById("movieB").querySelector("img");
   const movieC = document.getElementById("movieC").querySelector("img");
+  // Obtengo el ID de las figcaption
+  const figcaptionA = document
+    .getElementById("movieA")
+    .querySelector("figcaption");
+  const figcaptionB = document
+    .getElementById("movieB")
+    .querySelector("figcaption");
+  const figcaptionC = document
+    .getElementById("movieC")
+    .querySelector("figcaption");
 
   // Si es el ultimo paso por defecto no tiene un siguiente paso.
   if (currentQuestion !== totalQuestions) {
@@ -104,12 +114,15 @@ function optionsMovie(questions, movies, leterOption) {
     // Asignar las imágenes y textos alternativos a cada película
     movieA.src = moviesToLoad[0].img;
     movieA.alt = moviesToLoad[0].img_alt;
+    figcaptionA.textContent = moviesToLoad[0].img_alt;
 
     movieB.src = moviesToLoad[1].img;
     movieB.alt = moviesToLoad[1].img_alt;
+    figcaptionB.textContent = moviesToLoad[1].img_alt;
 
     movieC.src = moviesToLoad[2].img;
     movieC.alt = moviesToLoad[2].img_alt;
+    figcaptionC.textContent = moviesToLoad[2].img_alt;
 
     movieCards.forEach((card) => card.classList.remove("fade-out"));
   }, 800);

@@ -27,10 +27,25 @@
         <section class="progress-container">
           <div class="progress">
             <span>QUESTION 0 OF 0:</span>
-            <div class="circles">
-              <span id="question1" class="circle"></span>
-              <span id="question2" class="circle"></span>
-              <span id="question3" class="circle"></span>
+            <div class="circles" role="list">
+              <span
+                id="question1"
+                class="circle"
+                role="listitem"
+                aria-label="Question 1"
+              ></span>
+              <span
+                id="question2"
+                class="circle"
+                role="listitem"
+                aria-label="Question 2"
+              ></span>
+              <span
+                id="question3"
+                class="circle"
+                role="listitem"
+                aria-label="Question 3"
+              ></span>
             </div>
           </div>
         </section>
@@ -42,14 +57,17 @@
 
         <!-- Opciones de películas -->
         <section class="movies-container">
-          <figure id="movieA" class="movie-card">
-            <img src="" alt="The Gray Man" />
+          <figure id="movieA" class="movie-card" role="button">
+            <img src="" alt="loading..." />
+            <figcaption class="off"></figcaption>
           </figure>
-          <figure id="movieB" class="movie-card">
-            <img src="" alt="Blonde" />
+          <figure id="movieB" class="movie-card" role="button">
+            <img src="" alt="loading..." />
+            <figcaption class="off"></figcaption>
           </figure>
-          <figure id="movieC" class="movie-card">
-            <img src="" alt="Minions: The Rise of Gru" />
+          <figure id="movieC" class="movie-card" role="button">
+            <img src="" alt="loading..." />
+            <figcaption class="off"></figcaption>
           </figure>
         </section>
       </article>
