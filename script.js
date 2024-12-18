@@ -100,28 +100,8 @@ function updateQuestion(current) {
   questionSpan.textContent = `QUESTION ${current} OF ${totalQuestions}:`;
 }
 
-// Función para inicializar las imágenes
+// Funcion para cargar las opciones de las peliculas
 function optionsMovie(questions, movies, leterOption) {
-  // Obtener las imágenes por su ID
-  const movieA = document.getElementById("movieA").querySelector("img");
-  const movieB = document.getElementById("movieB").querySelector("img");
-  const movieC = document.getElementById("movieC").querySelector("img");
-  // Obtengo el ID de las figcaption
-  const figcaptionA = document
-    .getElementById("movieA")
-    .querySelector("figcaption");
-  const figcaptionB = document
-    .getElementById("movieB")
-    .querySelector("figcaption");
-  const figcaptionC = document
-    .getElementById("movieC")
-    .querySelector("figcaption");
-
-  if (currentQuestion !== totalQuestions) {
-    // valido si desactivo algun opcion por falta de ruta
-    followStep(currentQuestion, movies, movieCards);
-  }
-
   // Obtener las películas correspondientes al grupo de preguntas
   const moviesToLoad = movies[`${questions}_${leterOption}`].options;
   // Obtengo la pregunta
@@ -138,32 +118,67 @@ function optionsMovie(questions, movies, leterOption) {
     questionText.classList.remove("fade-out");
     return;
   }
+  // Asignar la pregunta al elemento HTML
+  questionText.textContent = question;
+
+  // Limpiar el contenedor de películas antes de agregar nuevas
+  const moviesContainer = document.querySelector(".movies-container");
+  moviesContainer.innerHTML = "";
 
   setTimeout(() => {
-    // Asignar la pregunta al elemento HTML
-    questionText.textContent = question;
-    // Asignar las imágenes y textos alternativos a cada película
-    movieA.src = moviesToLoad[0].img;
-    movieA.alt = moviesToLoad[0].img_alt;
-    figcaptionA.textContent = moviesToLoad[0].img_alt;
+    // Iterar sobre cada película en moviesToLoad
+    moviesToLoad.forEach((movie, index) => {
+      // Crear el elemento figure
+      const movieCard = document.createElement("figure");
+      movieCard.id = `movie${String.fromCharCode(65 + index)}`;
+      movieCard.className = "movie-card";
+      movieCard.setAttribute("role", "button");
+      movieCard.setAttribute("tabindex", "0");
 
-    movieB.src = moviesToLoad[1].img;
-    movieB.alt = moviesToLoad[1].img_alt;
-    figcaptionB.textContent = moviesToLoad[1].img_alt;
+      // Crear el elemento img
+      const img = document.createElement("img");
+      img.src = movie.img;
+      img.alt = movie.img_alt;
 
-    movieC.src = moviesToLoad[2].img;
-    movieC.alt = moviesToLoad[2].img_alt;
-    figcaptionC.textContent = moviesToLoad[2].img_alt;
+      // Crear el elemento figcaption
+      const figcaption = document.createElement("figcaption");
+      figcaption.className = "off";
+      figcaption.textContent = movie.img_alt;
+
+      // Agregar img y figcaption a movieCard
+      movieCard.appendChild(img);
+      movieCard.appendChild(figcaption);
+
+      // Agregar movieCard al contenedor de películas
+      moviesContainer.appendChild(movieCard);
+    });
+
+    // Agregar event listeners a las nuevas tarjetas de película
+    addEventListenersToMovieCards();
+
+    if (currentQuestion !== totalQuestions) {
+      // Validar si alguna opción debe ser desactivada
+      followStep(
+        currentQuestion,
+        movies,
+        document.querySelectorAll(".movie-card")
+      );
+    }
 
     movieCards.forEach((card) => card.classList.remove("fade-out"));
     questionText.classList.remove("fade-out");
-  }, 800);
+  }, 500);
 }
 
 // Buscar si la pregunta tiene una siguiente opción
 function followStep(currentQuestion, movies, movieCards) {
-  // Definir las letras posibles para validar (A, B, C)
-  const options = ["A", "B", "C"];
+  // Generar un array de letras basado en la longitud de movieCards
+  const options = Array.from({ length: movieCards.length }, (_, index) =>
+    String.fromCharCode(65 + index)
+  );
+
+  console.log("options", options);
+
   // Buscar si existe una opción para la siguiente pregunta
   options.forEach((option) => {
     // nextKey == a la siguiente pregunta del grupo option
@@ -198,6 +213,7 @@ function resetDisableState() {
 function nextGroup(idMovie) {
   // Llamar a la función para limpiar las clases 'disable'
   resetDisableState();
+  console.log("idMovieidMovie", idMovie);
 
   // Incrementar el número de la pregunta actual
   currentQuestion++;
@@ -214,29 +230,10 @@ function nextGroup(idMovie) {
   movieCards.forEach((card) => card.classList.add("fade-out"));
   // Agrego la class fede-aut a questionText
   questionText.classList.add("fade-out");
-  // Uso un switch case para cada pregunta, usando idMovie para resolver que grupo de asignar
-  switch (idMovie) {
-    case "movieA":
-      // Llamo a la siguiente pregunta
-      formQuestions(`quest${currentQuestion}`, "A");
-      console.log("idmovie, currentQuestion", idMovie, currentQuestion);
 
-      break;
-    case "movieB":
-      // Llamo a la siguiente pregunta
-      formQuestions(`quest${currentQuestion}`, "B");
-      console.log("idmovie, currentQuestion", idMovie, currentQuestion);
-      break;
-    case "movieC":
-      // Llamo a la siguiente pregunta
-      formQuestions(`quest${currentQuestion}`, "C");
-      break;
-    default:
-      // error por defecto
-      console.error("Error loading the movie data:", idMovie);
-
-      break;
-  }
+  // obtengo la ultima letra de idMovie
+  const lastLetter = idMovie.charAt(idMovie.length - 1);
+  formQuestions(`quest${currentQuestion}`, lastLetter);
 }
 
 function toggleArticles() {
@@ -281,6 +278,36 @@ function findMaxQuest(data) {
   });
   console.log("maxValue", maxValue);
   totalQuestions = maxValue;
+}
+// Función para agregar event listeners a las tarjetas de película
+function addEventListenersToMovieCards() {
+  document.querySelectorAll(".movie-card").forEach((figure) => {
+    // Función para manejar el clic y la tecla Enter
+    const handleAction = () => {
+      const movieId = figure.id;
+
+      // Verificar si la tarjeta tiene la clase "disable"
+      if (figure.classList.contains("disable")) {
+        console.log(
+          `La tarjeta ${movieId} está deshabilitada. No se puede hacer clic.`
+        );
+        return; // Salir si la tarjeta está deshabilitada
+      }
+
+      // Si no tiene la clase "disable", ejecutar la función nextGroup
+      nextGroup(movieId);
+    };
+
+    // Escuchar el evento de clic en cada tarjeta de película
+    figure.addEventListener("click", handleAction);
+
+    // Escuchar el evento de tecla en cada tarjeta de película
+    figure.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        handleAction();
+      }
+    });
+  });
 }
 
 // Seleccionamos todas las imágenes dentro de .movie-card

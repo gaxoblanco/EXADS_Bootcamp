@@ -13,6 +13,10 @@
       {
         "img": "img/movie/minions_the_rise_of_gru.jpg",
         "img_alt": "minions_the_rise_of_gru"
+      },
+      {
+        "img": "img/movie/minions_the_rise_of_gru.jpg",
+        "img_alt": "minions_the_rise_of_gru"
       }
     ]
   },
@@ -85,23 +89,6 @@
     ]
   },
   "quest3_C": {
-    "question": "Which one do you want to watch now?",
-    "options": [
-      {
-        "img": "img/movie/purple_hearts.jpg",
-        "img_alt": "the_flash"
-      },
-      {
-        "img": "img/movie/the_batman_march_4.jpg",
-        "img_alt": "the_batman_march_4"
-      },
-      {
-        "img": "img/movie/the_war_of_the_rohirrim.jpg",
-        "img_alt": "spider-man_no_way_home"
-      }
-    ]
-  },
-  "quest4_C": {
     "question": "Which one do you want to watch now?",
     "options": [
       {
