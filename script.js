@@ -1,6 +1,6 @@
 // vairables
 let currentQuestion = 1;
-const totalQuestions = 3;
+let totalQuestions = 3;
 const moviesArray = {};
 // Obtengo el elemento de la pregunta
 const questionText = document.getElementById("question-text");
@@ -16,11 +16,81 @@ document.addEventListener("DOMContentLoaded", () => {
       Object.assign(moviesArray, data);
       // Inicializar las imágenes en el HTML con los datos del JSON
       // initializeMovies(data);
+      findMaxQuest([moviesArray]);
+      // Generar los círculos dinámicamente
+      updateProgressCircles(totalQuestions);
       formQuestions("quest1", "A");
       updateQuestion(1);
     })
     .catch((error) => console.error("Error loading the movie data:", error));
 });
+
+// Función para generar los spans dinámicamente
+function updateProgressCircles(totalQuestions) {
+  const circlesContainer = document.querySelector(".circles");
+  const progressText = document.querySelector(".progress > span");
+
+  // Limpiar los spans actuales (si hay)
+  circlesContainer.innerHTML = "";
+
+  // Generar los nuevos spans dinámicamente
+  for (let i = 1; i <= totalQuestions; i++) {
+    const span = document.createElement("span");
+    span.id = `question${i}`;
+    span.className = "circle";
+    span.setAttribute("role", "listitem");
+    span.setAttribute("aria-label", `Question ${i}`);
+    span.setAttribute("tabindex", "0");
+    circlesContainer.appendChild(span);
+  }
+
+  // Actualizar el texto de progreso
+  progressText.textContent = `QUESTION 0 OF ${totalQuestions}:`;
+}
+
+// Funcion para inicializar progress questions (los circulos)
+function formQuestions(questions, leterOption) {
+  console.log("formQuestions ->", questions, moviesArray, leterOption);
+
+  // Obtener todas las preguntas dinámicamente
+  const questionElements = Array.from(
+    document.querySelectorAll('[id^="question"]')
+  ); // Selecciona elementos con IDs que comienzan con "question"
+
+  // Extraer el número de la pregunta actual
+  const match = questions.match(/^quest(\d+)/);
+  if (!match) {
+    console.error("Formato de pregunta inválido:", questions);
+    return;
+  }
+
+  const currentQuestion = parseInt(match[1], 10); // Número de la pregunta actual
+
+  // Desactivar todas las preguntas
+  questionElements.forEach((el) => el.classList.remove("active"));
+
+  // Activar la pregunta actual
+  const currentQuestionElement = document.getElementById(
+    `question${currentQuestion}`
+  );
+  if (currentQuestionElement) {
+    currentQuestionElement.classList.add("active");
+  } else {
+    console.error(
+      `No se encontró el elemento con ID: question${currentQuestion}`
+    );
+  }
+
+  // Actualizar y cargar opciones de películas
+  updateQuestion(currentQuestion);
+  optionsMovie(questions, moviesArray, leterOption);
+
+  // Enfocar la pregunta actual si es necesario
+  const questionText = document.getElementById("questionText");
+  if (questionText) {
+    questionText.focus();
+  }
+}
 
 // Funcion para actualizar el marcador de preguntas
 function updateQuestion(current) {
@@ -28,53 +98,6 @@ function updateQuestion(current) {
     ".progress-container .progress > span"
   );
   questionSpan.textContent = `QUESTION ${current} OF ${totalQuestions}:`;
-}
-
-// Funcion para inicializar progress questions (los circulos)
-function formQuestions(questions, leterOption) {
-  console.log("formQuestions ->", questions, moviesArray, leterOption);
-  // Obtener las preguntas por su ID
-  const question1 = document.getElementById("question1");
-  // Obtener las preguntas por su ID
-  const question2 = document.getElementById("question2");
-  // Obtener las preguntas por su ID
-  const question3 = document.getElementById("question3");
-
-  // switch case para cada pregunta
-  switch (questions) {
-    case "quest1":
-      // Le agrego la class active
-      question1.classList.add("active");
-      // Cargo las preguntas/ movies
-      optionsMovie(questions, moviesArray, leterOption);
-
-      break;
-    case "quest2":
-      // Le quito la class active
-      question1.classList.remove("active");
-      // Le agrego la class active
-      question2.classList.add("active");
-      updateQuestion(2);
-      // Cargo las preguntas/ movies
-      optionsMovie(questions, moviesArray, leterOption);
-      // enfoco questionText para leer la siguiente pregunta
-      questionText.focus();
-      break;
-    case "quest3":
-      // Le quito la class active
-      question2.classList.remove("active");
-      // Le agrego la class active
-      question3.classList.add("active");
-      updateQuestion(3);
-      // Cargo las preguntas/ movies
-      optionsMovie(questions, moviesArray, leterOption);
-      // enfoco questionText para leer la siguiente pregunta
-      questionText.focus();
-      break;
-
-    default:
-      break;
-  }
 }
 
 // Función para inicializar las imágenes
@@ -183,6 +206,8 @@ function nextGroup(idMovie) {
   if (currentQuestion === totalQuestions + 1) {
     // paso a la siguiente pantalla intercambiando el article
     toggleArticles();
+    console.log("currentQuestion", currentQuestion);
+    console.log("totalQuestions", totalQuestions);
   }
 
   // Agrego la class fade-out a .movie-card
@@ -239,6 +264,23 @@ function toggleArticles() {
   } else {
     console.error("No se encontró el elemento con id 'promo-article'");
   }
+}
+
+// Obtengo el numero de preguntas y las guardo en una variable
+function findMaxQuest(data) {
+  let maxValue = 0;
+  data.forEach((item) => {
+    Object.keys(item).forEach((key) => {
+      // Verificamos si la clave coincide con el patrón questN (ignorando sufijos como _A)
+      const match = key.match(/^quest(\d+)/);
+      if (match) {
+        const num = parseInt(match[1], 10);
+        maxValue = Math.max(maxValue, num);
+      }
+    });
+  });
+  console.log("maxValue", maxValue);
+  totalQuestions = maxValue;
 }
 
 // Seleccionamos todas las imágenes dentro de .movie-card
