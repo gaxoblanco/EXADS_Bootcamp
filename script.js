@@ -50,7 +50,7 @@ function updateProgressCircles(totalQuestions) {
 
 // Funcion para inicializar progress questions (los circulos)
 function formQuestions(questions, leterOption) {
-  console.log("formQuestions ->", questions, moviesArray, leterOption);
+  // console.log("formQuestions ->", questions, moviesArray, leterOption);
 
   // Obtener todas las preguntas dinámicamente
   const questionElements = Array.from(
@@ -177,8 +177,6 @@ function followStep(currentQuestion, movies, movieCards) {
     String.fromCharCode(65 + index)
   );
 
-  console.log("options", options);
-
   // Buscar si existe una opción para la siguiente pregunta
   options.forEach((option) => {
     // nextKey == a la siguiente pregunta del grupo option
@@ -186,15 +184,12 @@ function followStep(currentQuestion, movies, movieCards) {
     const nextMovies = movies[nextKey];
 
     if (!nextMovies) {
-      console.log(`No hay opciones para la clave: ${nextKey}`);
       // Al caso de que no exista la ruta, deshabilito la opcion
       movieCards.forEach((card) => {
         if (card.id === `movie${option}`) {
           card.classList.add("disable");
         }
       });
-    } else {
-      console.log(`Existen opciones para la clave: ${nextKey}`);
     }
   });
 }
@@ -206,14 +201,12 @@ function resetDisableState() {
       card.classList.remove("disable"); // Elimina la clase disable
     }
   });
-  console.log("Se ha eliminado la clase 'disable' de todas las tarjetas.");
 }
 
 // Función pasar al siguiente grupo de preguntas/ movies
 function nextGroup(idMovie) {
   // Llamar a la función para limpiar las clases 'disable'
   resetDisableState();
-  console.log("idMovieidMovie", idMovie);
 
   // Incrementar el número de la pregunta actual
   currentQuestion++;
@@ -222,8 +215,8 @@ function nextGroup(idMovie) {
   if (currentQuestion === totalQuestions + 1) {
     // paso a la siguiente pantalla intercambiando el article
     toggleArticles();
-    console.log("currentQuestion", currentQuestion);
-    console.log("totalQuestions", totalQuestions);
+    // console.log("currentQuestion", currentQuestion);
+    // console.log("totalQuestions", totalQuestions);
   }
 
   // Agrego la class fade-out a .movie-card
@@ -276,7 +269,6 @@ function findMaxQuest(data) {
       }
     });
   });
-  console.log("maxValue", maxValue);
   totalQuestions = maxValue;
 }
 // Función para agregar event listeners a las tarjetas de película
@@ -325,7 +317,6 @@ document.querySelectorAll(".movie-card").forEach((figure) => {
     }
 
     // Si no tiene la clase "disable", ejecutar la función nextGroup
-    console.log(`Se hizo clic en la tarjeta ${movieId}`);
     nextGroup(movieId);
   };
 

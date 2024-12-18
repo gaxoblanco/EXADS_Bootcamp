@@ -3,6 +3,7 @@
 @media (min-width: 610px) {
   .promo-section {
     margin: 20px auto;
+    margin-top: 100px;
   }
 }
 /* Media Queries para tabletas */
