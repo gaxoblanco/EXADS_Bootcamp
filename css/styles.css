@@ -119,11 +119,13 @@
   .instruction-container {
     text-align: center;
     margin-top: 32px;
+    margin: 0 36px;
   }
   
   .instruction-container h2 {
     font-size: var(--font-size-xlarge);
     font-weight: 600;
+    line-height: 1.2;
   }
   .instruction-container h2:focus-visible {
     padding: 20px 0;

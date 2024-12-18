@@ -4,29 +4,38 @@
 .promo-section {
     background-color: var(--text-color);
     color: black;
-    padding: 2rem;
     border-radius: 10px;
     border: 10px solid var(--primary-color);
-    max-width: 680px;
+    max-width: 580px;
     margin: 20px 36px;
     text-align: center;
-
   }
   
   .promo-content {
-    padding: 20px;
+    padding: 30px 12px 12px 12px;
   }
   
   .promo-title {
     font-size: var(--font-size-xxlarge);
     color: var(--primary-color);
     margin-bottom: 1rem;
+    line-height: 1.2;
+
   }
   
   .promo-subtitle {
     font-size: var(--font-size-medium);
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
     text-decoration: none;
+  }
+  /* el primer hijo de promo-content que tiene la clase promo-subtitle */
+  .promo-content > .promo-subtitle:nth-of-type(1) {
+    margin-bottom: 0.8rem;
+  }
+
+  /* el segundo hijo de promo-content que tiene la clase promo-subtitle */
+  .promo-content > .promo-subtitle:nth-of-type(2) {
+    margin-bottom: 1.3rem;
   }
   
   .promo-button {
