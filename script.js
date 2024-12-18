@@ -10,7 +10,12 @@ const movieCards = document.querySelectorAll(".movie-card");
 document.addEventListener("DOMContentLoaded", () => {
   // Cargar el archivo JSON que contiene los datos de las películas
   fetch("movies.json")
-    .then((response) => response.json()) // Convertir la respuesta en formato JSON
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      return response.json();
+    })
     .then((data) => {
       // Guardar los datos en la variable data
       Object.assign(moviesArray, data);
