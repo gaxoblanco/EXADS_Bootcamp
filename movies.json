@@ -37,15 +37,15 @@
     "question": "Which one do you like the most?",
     "options": [
       {
-        "img": "img/movie/bullet_train.jpg",
+        "img": "img/movie/purple_hearts.jpg",
         "img_alt": "bullet_train"
       },
       {
-        "img": "img/movie/top_gun_maverick.jpg",
+        "img": "img/movie/black _anther_wakanda_forever.jpg",
         "img_alt": "top_gun_maverick"
       },
       {
-        "img": "img/movie/thor_love_and_thunder.jpg",
+        "img": "img/movie/the_godfather.jpg",
         "img_alt": "thor_love_and_thunder"
       }
     ]
@@ -71,11 +71,11 @@
     "question": "Which one do you want to watch now?",
     "options": [
       {
-        "img": "img/movie/spider-man_no_way_home.jpg",
+        "img": "img/movie/arrested_development.jpg",
         "img_alt": "spider-man_no_way_home"
       },
       {
-        "img": "img/movie/the_batman_march_4.jpg",
+        "img": "img/movie/the_war_of_the_rohirrim.jpg",
         "img_alt": "the_batman_march_4"
       },
       {
@@ -88,7 +88,7 @@
     "question": "Which one do you want to watch now?",
     "options": [
       {
-        "img": "img/movie/the_flash.jpg",
+        "img": "img/movie/purple_hearts.jpg",
         "img_alt": "the_flash"
       },
       {
@@ -96,7 +96,7 @@
         "img_alt": "the_batman_march_4"
       },
       {
-        "img": "img/movie/spider-man_no_way_home.jpg",
+        "img": "img/movie/the_war_of_the_rohirrim.jpg",
         "img_alt": "spider-man_no_way_home"
       }
     ]
