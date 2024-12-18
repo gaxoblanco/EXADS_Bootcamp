@@ -1,6 +1,8 @@
 // vairables
 let currentQuestion = 1;
+const totalQuestions = 3;
 const moviesArray = {};
+
 // funciona igual que un fech a una API
 document.addEventListener("DOMContentLoaded", () => {
   // Cargar el archivo JSON que contiene los datos de las películas
@@ -19,14 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Funcion para actualizar el marcador de preguntas
 function updateQuestion(current) {
-  const totalQuestions = 3;
   const questionSpan = document.querySelector(
     ".progress-container .progress > span"
   );
   questionSpan.textContent = `QUESTION ${current} OF ${totalQuestions}:`;
 }
 
-// Funcion para inicializar progress questions
+// Funcion para inicializar progress questions (los circulos)
 function formQuestions(questions, leterOption) {
   console.log("formQuestions ->", questions, moviesArray, leterOption);
   // Obtener las preguntas por su ID
@@ -79,8 +80,10 @@ function optionsMovie(questions, movies, leterOption) {
   const movieB = document.getElementById("movieB").querySelector("img");
   const movieC = document.getElementById("movieC").querySelector("img");
 
-  // valido si desactivo algun opcion por falta de ruta
-  followStep(currentQuestion, movies, movieCards);
+  if (currentQuestion !== totalQuestions) {
+    // valido si desactivo algun opcion por falta de ruta
+    followStep(currentQuestion, movies, movieCards);
+  }
 
   // Obtener las películas correspondientes al grupo de preguntas
   const moviesToLoad = movies[`${questions}_${leterOption}`];
@@ -111,6 +114,7 @@ function optionsMovie(questions, movies, leterOption) {
   }, 800);
 }
 
+// Buscar si la pregunta tiene una siguiente opción
 function followStep(currentQuestion, movies, movieCards) {
   // Definir las letras posibles para validar (A, B, C)
   const options = ["A", "B", "C"];
@@ -134,10 +138,24 @@ function followStep(currentQuestion, movies, movieCards) {
   });
 }
 
+// Función para quitar la clase 'disable' de todas las tarjetas
+function resetDisableState() {
+  const movieCards = document.querySelectorAll(".movie-card");
+  movieCards.forEach((card) => {
+    if (card.classList.contains("disable")) {
+      card.classList.remove("disable"); // Elimina la clase disable
+    }
+  });
+  console.log("Se ha eliminado la clase 'disable' de todas las tarjetas.");
+}
+
 // Función pasar al siguiente grupo de preguntas/ movies
 function nextGroup(idMovie) {
+  // Llamar a la función para quitar las clases 'disable'
+  resetDisableState();
+
+  // Incrementar el número de la pregunta actual
   currentQuestion++;
-  // console.log("currentQ", currentQuestion);
 
   // Agrego la class fade-out a .movie-card
   const movieCards = document.querySelectorAll(".movie-card");
