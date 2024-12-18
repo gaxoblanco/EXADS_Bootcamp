@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Guardar los datos en la variable data
       Object.assign(moviesArray, data);
       // Inicializar las imágenes en el HTML con los datos del JSON
-      // initializeMovies(data);
       findMaxQuest([moviesArray]);
       // Generar los círculos dinámicamente
       updateProgressCircles(totalQuestions);
