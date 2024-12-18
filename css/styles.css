@@ -125,6 +125,10 @@
     font-weight: 600;
   }
   
+  /* on off switch */
+  .off {
+    display: none;
+  }
   
   /* Footer */
   footer {

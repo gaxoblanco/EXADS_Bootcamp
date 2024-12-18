@@ -80,6 +80,7 @@ function optionsMovie(questions, movies, leterOption) {
   const movieB = document.getElementById("movieB").querySelector("img");
   const movieC = document.getElementById("movieC").querySelector("img");
 
+  // Si es el ultimo paso por defecto no tiene un siguiente paso.
   if (currentQuestion !== totalQuestions) {
     // valido si desactivo algun opcion por falta de ruta
     followStep(currentQuestion, movies, movieCards);
@@ -157,6 +158,15 @@ function nextGroup(idMovie) {
   // Incrementar el número de la pregunta actual
   currentQuestion++;
 
+  console.log("currentQuestion", currentQuestion);
+  console.log("totalQuestions", totalQuestions);
+
+  // Si es el ultimo paso
+  if (currentQuestion === totalQuestions + 1) {
+    // paso a la siguiente pantalla intercambiando el article
+    toggleArticles();
+  }
+
   // Agrego la class fade-out a .movie-card
   const movieCards = document.querySelectorAll(".movie-card");
   movieCards.forEach((card) => card.classList.add("fade-out"));
@@ -182,6 +192,33 @@ function nextGroup(idMovie) {
       console.error("Error loading the movie data:", idMovie);
 
       break;
+  }
+}
+
+function toggleArticles() {
+  // Seleccionamos los artículos usando sus IDs
+  const quizArticle = document.getElementById("quiz-article");
+  const promoArticle = document.getElementById("promo-article");
+
+  // Verificamos si los elementos existen
+  if (quizArticle) {
+    quizArticle.style.animation = "fadeOutScale 0.3s ease-in-out forwards";
+
+    setTimeout(() => {
+      quizArticle.classList.add("off");
+    }, 300); // Duración coincide con la animación (0.3s)
+  } else {
+    console.error("No se encontró el elemento con id 'quiz-article'");
+  }
+
+  if (promoArticle) {
+    setTimeout(() => {
+      promoArticle.classList.remove("off");
+    }, 300);
+    // Agrega la animación de entrada
+    promoArticle.style.animation = "fadeInScale 0.5s ease-in-out forwards";
+  } else {
+    console.error("No se encontró el elemento con id 'promo-article'");
   }
 }
 
